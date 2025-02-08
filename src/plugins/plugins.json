@@ -24,5 +24,11 @@
         "display_name": "Clock",
         "id": "clock",
         "class": "Clock"
+    },
+    {
+        "display_name": "French Newspaper",
+        "id": "french_newspaper",
+        "class": "FrenchNewspaper",
+        "image_settings": ["keep-width"]
     }
 ]
