@@ -10,13 +10,6 @@
     <!-- Newspaper Input -->
     <div class="form-group">
         <label for="newspaper" class="form-label">Newspaper:</label>
-        <select name="newspaperName" id="newspaper">
-            <!-- Generate the initial list using Jinja -->
-            {% for newspaper in newspapers %}
-            <option value="{{ newspaper.name }}" slug="{{ newspaper.slug }}"></option>
-            {% endfor %}
-        </select>
-        
         <input
             type="text"
             id="newspaper"
@@ -26,6 +19,12 @@
             placeholder="Type to search..."
             onchange="updateSlug()"
         />
+        <datalist id="newspaperList">
+            <!-- Generate the initial list using Jinja -->
+            {% for newspaper in newspapers %}
+            <option value="{{ newspaper.name }}" slug="{{ newspaper.slug }}"></option>
+            {% endfor %}
+        </datalist>
         <!-- Hidden Input for Newspaper Slug -->
         <input type="hidden" id="newspaperSlug" name="newspaperSlug" />
     </div>
@@ -57,6 +56,4 @@ function updateSlug() {
         //filterNewspapersByLocation();
     }
 }
-
-
 </script>

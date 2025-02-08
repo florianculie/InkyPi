@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from utils.image_utils import get_image
 from PIL import Image
 import logging
-from plugins.french_newspaper.constants import NEWSPAPERS
+from plugins.newspaper.constants import NEWSPAPERS
 
 logger = logging.getLogger(__name__)
 
