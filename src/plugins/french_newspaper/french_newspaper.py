@@ -31,9 +31,9 @@ class FrenchNewspaper(BasePlugin):
 
             if img_ratio < desired_ratio:
                 new_height = int((img_width*desired_width) / desired_height)
-                size = (400, 800)
-                new_image = Image.new("RGB", size, (255, 255, 255))
+                new_image = Image.new("RGB", (img_width, new_height), (255, 255, 255))
                 new_image.paste(image, (0,0))
+                size = (400, 800)
                 padded_image = ImageOps.pad(new_image, size, color="#fff")
                 image = padded_image
         else:
