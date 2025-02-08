@@ -34,7 +34,7 @@ class FrenchNewspaper(BasePlugin):
                 new_image = Image.new("RGB", (img_width, new_height), (255, 255, 255))
                 new_image.paste(image, (0,0))
                 size = (480, 800)
-                padded_image = ImageOps.pad(new_image, size, color="#fff", centering=(0.5, 0.5))
+                padded_image = ImageOps.pad(new_image, size, color="#fff")
                 image = padded_image
         else:
             raise RuntimeError("Newspaper front cover not found.")
