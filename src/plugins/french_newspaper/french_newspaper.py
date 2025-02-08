@@ -1,7 +1,7 @@
 from plugins.base_plugin.base_plugin import BasePlugin 
 from datetime import datetime
 from utils.image_utils import get_image
-from PIL import Image
+from PIL import Image, ImageOps
 import logging
 from plugins.french_newspaper.constants import NEWSPAPERS
 
@@ -31,9 +31,11 @@ class FrenchNewspaper(BasePlugin):
 
             if img_ratio < desired_ratio:
                 new_height = int((img_width*desired_width) / desired_height)
-                new_image = Image.new("RGB", (img_width, new_height), (255, 255, 255))
+                size = (img_width, new_height)
+                new_image = Image.new("RGB", size, (255, 255, 255))
                 new_image.paste(image, (0,0))
-                image = new_image
+                padded_image = ImageOps.pad(new_image, size, color="#fff")
+                image = padded_image
         else:
             raise RuntimeError("Newspaper front cover not found.")
         return image
