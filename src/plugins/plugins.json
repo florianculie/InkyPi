@@ -34,5 +34,11 @@
         "display_name": "Screenshot",
         "id": "screenshot",
         "class": "Screenshot"
+	},
+	{
+        "display_name": "French Newspaper",
+        "id": "french_newspaper",
+        "class": "FrenchNewspaper",
+        "image_settings": ["keep-width"]
     }
 ]
