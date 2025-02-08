@@ -1,0 +1,62 @@
+<!-- Select2 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Select2 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
+
+<!-- Newspaper and Location Search -->
+<div class="form-group">
+    <!-- Newspaper Input -->
+    <div class="form-group">
+        <label for="newspaper" class="form-label">Newspaper:</label>
+        <select name="newspaperName" id="newspaper">
+            <!-- Generate the initial list using Jinja -->
+            {% for newspaper in newspapers %}
+            <option value="{{ newspaper.name }}" slug="{{ newspaper.slug }}"></option>
+            {% endfor %}
+        </select>
+        
+        <input
+            type="text"
+            id="newspaper"
+            name="newspaperName"
+            class="form-input"
+            list="newspaperList"
+            placeholder="Type to search..."
+            onchange="updateSlug()"
+        />
+        <!-- Hidden Input for Newspaper Slug -->
+        <input type="hidden" id="newspaperSlug" name="newspaperSlug" />
+    </div>
+
+</div>
+
+<!-- Pass data to JavaScript -->
+<script>
+    // Pass the newspapers data as a JavaScript object
+    const newspapers = {{ newspapers|tojson }};
+</script>
+
+<script>
+function updateSlug() {
+    const newspaperInput = document.getElementById("newspaper");
+    const slugInput = document.getElementById("newspaperSlug");
+
+    // Find the selected newspaper in the JavaScript array
+    const selectedNewspaper = newspapers.find(
+        (newspaper) => newspaper.name === newspaperInput.value
+    );
+
+    if (selectedNewspaper) {
+        slugInput.value = selectedNewspaper.slug;
+    } else {
+        slugInput.value = "";
+
+        // Always filter newspapers based on the current location
+        //filterNewspapersByLocation();
+    }
+}
+
+
+</script>
