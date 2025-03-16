@@ -29,5 +29,11 @@
         "display_name": "Weather",
         "id": "weather",
         "class": "Weather"
-    }
+    },
+	{
+		"display_name": "French Newspaper",
+        "id": "french_newspaper",
+        "class": "FrenchNewspaper",
+        "image_settings": ["keep-width"]
+	}
 ]
